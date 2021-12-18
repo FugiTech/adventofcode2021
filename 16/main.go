@@ -79,7 +79,7 @@ func (r *BitReader) ReadPacket() (V, T, val, bits uint64) {
 		bits += 1
 
 		var process func(uint64)
-		subvals := make([]uint64, 0, 10)
+		subvals := make([]uint64, 0, 64)
 		switch T {
 		case 0:
 			process = func(v uint64) { val += v }

@@ -41,8 +41,24 @@ func AnswerPart1(input string) (int, error) {
 }
 
 func AnswerV1(input string) (int, error) {
+	lines := strings.Split(input, "\n")
+	maxMag := 0
+	for i := 0; i < len(lines); i++ {
+		for j := 0; j < len(lines); j++ {
+			if i == j {
+				continue
+			}
 
-	return 0, nil
+			l := ParseSnailfishNumber(lines[i])
+			r := ParseSnailfishNumber(lines[j])
+			m := AddSnailfishNumber(l, r).Magnitude()
+			if m > maxMag {
+				maxMag = m
+			}
+		}
+	}
+
+	return maxMag, nil
 }
 
 func AddSnailfishNumber(l, r *SnailfishNumber) *SnailfishNumber {

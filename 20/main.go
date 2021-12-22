@@ -64,7 +64,7 @@ func AnswerPart1(input string) (int, error) {
 		}
 	}
 
-	printTest(0)
+	//printTest(0)
 	for step := 1; step <= MaxSteps; step++ {
 		n := [300][300]int{}
 		for y := 1; y < 299; y++ {

@@ -107,7 +107,7 @@ func AnswerV1(input string) (int, error) {
 		}
 	}
 
-	for step := 0; step < 10000; step++ {
+	for step := 1; step < 10000; step++ {
 		flashes = 0
 
 		for i := 0; i < 10; i++ {
@@ -125,7 +125,7 @@ func AnswerV1(input string) (int, error) {
 		}
 
 		if flashes == 100 {
-			return step + 1, nil
+			return step, nil
 		}
 	}
 

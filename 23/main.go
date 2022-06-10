@@ -293,10 +293,12 @@ func AnswerV1(input string) (int, error) {
 		return c
 	}
 
+	hrtMemo := map[[11]int]bool{}
+	hrtMemo[[11]int{}] = true
 	var hallwayReachableTest func([11]int) bool
 	hallwayReachableTest = func(hallway [11]int) bool {
-		if hallway == [11]int{} {
-			return true
+		if v, ok := hrtMemo[hallway]; ok {
+			return v
 		}
 
 		for ix, v := range hallway {
@@ -324,11 +326,13 @@ func AnswerV1(input string) (int, error) {
 				nh := hallway
 				nh[ix] = 0
 				if hallwayReachableTest(nh) {
+					hrtMemo[hallway] = true
 					return true
 				}
 			}
 		}
 
+		hrtMemo[hallway] = false
 		return false
 	}
 
